@@ -537,11 +537,10 @@ abstract class Source implements DriverInterface
     protected function prepareStringForLikeCompare($input, $type = null)
     {
         if ($type === 'array') {
-            $outputString = str_replace(':{i:0;', ':{', serialize($input));
-        } else {
-            $outputString = $this->removeAccents($input);
+            $input = str_replace(':{i:0;', ':{', serialize($input));
         }
-        return $outputString;
+        
+        return $this->removeAccents($input);
     }
 
     private function removeAccents($str)
